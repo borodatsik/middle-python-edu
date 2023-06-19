@@ -1,0 +1,2 @@
+CREATE DATABASE middle_python_edu;
+CREATE SCHEMA hw1;
