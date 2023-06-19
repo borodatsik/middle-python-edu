@@ -17,7 +17,8 @@ class HW1_db():
     
     def replace_nans(self, df):
         """Замена пустот на None, под формат баз данных PostgreSQL.
-
+        В т.ч. заменяются пустые строки ''.
+        
         Аргументы
         ----------
         df : pandas.DataFrame
@@ -29,6 +30,7 @@ class HW1_db():
             Датафрейм для заливки в БД с "отформатированными" пустотами.
         """
         df = df.where(pd.notna(df), None)
+        df = df.replace({'': None})
         df = df.replace({pd.NaT: None})
         df = df.replace({NaN: None})
         
@@ -97,12 +99,12 @@ class HW1_db():
         query : str
             SELECT SQL-запрос.
         """
-        conn = create_engine(self.db_uri)
+        engine = create_engine(self.db_uri)
         try:
-            df = pd.read_sql_query(query, conn)
+            df = pd.read_sql_query(query, engine)
             return df
         finally:
-            conn.close()
+            engine.dispose()
 
     def execute_query(self, query):
         """Метод для выполнения различных запросов, 
@@ -125,3 +127,36 @@ class HW1_db():
             raise error
         finally:
             conn.close()
+            
+    def execute_sql(self, filepath, encoding='cp1251'):
+        """Надстройка на методом self.execute_query
+        для выполнения различных запросов из .sql файлов.
+        
+        Аргументы
+        ----------
+        filepath : str
+            Путь к файлу .sql с запросом.
+        encoding: str, default: 'cp1251'
+            Кодировка .sql файла.
+        """
+        with open(filepath, 'r', encoding=encoding) as q:
+            query = q.read()
+        self.execute_query(query)
+            
+    def truncate_table(self, schema, table, restart_identity=True):
+        """Метод для полной очистки таблицы.
+        
+        Аргументы
+        ----------
+        schema: str
+            Название схемы БД.
+        table : str
+            Название таблицы БД.
+        restart_identity: bool, default: True
+            Удаление с перезапуском счетчика генерируемого идентификатора.
+        """
+        if restart_identity:
+            restart_identity_statement = 'RESTART IDENTITY'
+        else:
+            restart_identity_statement = ''
+        self.execute_query(f"""TRUNCATE TABLE {schema}.{table} {restart_identity_statement}""")
