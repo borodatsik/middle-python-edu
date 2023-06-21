@@ -1,2 +1,4 @@
 01_json_to_db/bulk_data
+01_json_to_db/__pycache__
+01_json_to_db/.ipynb_checkpoints
 jupyter.lnk

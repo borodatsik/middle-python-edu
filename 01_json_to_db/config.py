@@ -2,10 +2,9 @@ import os
 from sqlalchemy.engine.url import make_url
 
 # Параметры базы данных
-
-# Строка подключения в виде
-# postgresql+psycopg2://username:password@host:port/database
-# сохранена в качестве переменной среды
+### Строка подключения в виде
+### postgresql+psycopg2://username:password@host:port/database
+### сохранена в качестве переменной среды
 db_uri_env_name = "MIDDLE_PYTHON_EDU_DB_SQLALCHEMY_CONN"
 DB_URI = os.getenv(db_uri_env_name)
 if not DB_URI:
@@ -25,6 +24,7 @@ DB_CREDENTIALS = dict(
     
 schema = 'hw1'
 okved_table = 'okved'
+egrul_table = 'telecom_companies'
 
 # Параметры файловой системы
 bulk_data_dir = 'bulk_data'
@@ -33,3 +33,11 @@ egrul_filename = 'egrul.json.zip'
 
 okved_filepath = os.path.join(bulk_data_dir, okved_filename)
 egrul_filepath = os.path.join(bulk_data_dir, egrul_filename)
+
+# Параметры скрипта
+okved_primary_code = '61'
+egrul_dtypes = {
+    'ogrn': 'int64',
+    'inn': 'int64',
+    'kpp': 'int64',
+    }

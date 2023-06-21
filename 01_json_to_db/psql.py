@@ -7,8 +7,8 @@ from numpy import NaN
 
 import config
 
-class HW1_db():
-    """Класс для работы с базой данных 'hw1'"""
+class PsqlConnector():
+    """Класс для работы с базой данных PostgreSQL"""
     
     # -------- Initialize ---------------------------------------
     def __init__(self):

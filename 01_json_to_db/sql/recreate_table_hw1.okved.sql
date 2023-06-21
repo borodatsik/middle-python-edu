@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS hw1.okved;
+CREATE TABLE hw1.okved (
+	code VARCHAR PRIMARY KEY,
+	parent_code VARCHAR,
+	section VARCHAR,
+	name VARCHAR,
+	comment VARCHAR,
+	load_dttm TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
