@@ -10,7 +10,6 @@ import config
 class PsqlConnector():
     """Класс для работы с базой данных PostgreSQL"""
     
-    # -------- Initialize ---------------------------------------
     def __init__(self):
         self.db_credentials = config.DB_CREDENTIALS
         self.db_uri = config.DB_URI
