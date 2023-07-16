@@ -1,0 +1,1 @@
+CREATE DATABASE middle_python_edu;

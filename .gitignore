@@ -1,4 +1,7 @@
+jupyter.lnk
 01_json_to_db/bulk_data
 01_json_to_db/__pycache__
 01_json_to_db/.ipynb_checkpoints
-jupyter.lnk
+02_html_and_api_parsing/__pycache__
+02_html_and_api_parsing/.ipynb_checkpoints
+02_html_and_api_parsing/02_html_and_api_parsing.ipynb
