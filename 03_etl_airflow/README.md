@@ -15,7 +15,11 @@ DAG состоит из 5 тасков:
 1. Таск print_top_key_skills - данные по вакансиям фильтруются по названию работодателя (выбираются только телеком-компании). Далее собирается сводная таблица по количеству встречающихся в этих вакансиях требуемых ключевых навыков, результат печатается в лог таска.
 
 Зависимости тасков выглядят следующим образом:
+
 ![task_dependencies](https://github.com/borodatsik/middle-python-edu/blob/main/03_etl_airflow/img/01_task_dependencies.png?raw=true)
+
+При запуске DAG одновременно запускаются таски create_tables и download_egrul. После выполнения create_tables запускается загрузка вакансий upload_vacancies. После выполнения create_tables и download_egrul запускается загрузка телеком-компаний в БД upload_telecom_companies. И только по окончании upload_vacancies и upload_telecom_companies запускается финальный print_top_key_skills.
+
 ### Версии DAG, варианты запуска
 Внутри dag.py в цикле генерируется три версии DAG:
 1. test
