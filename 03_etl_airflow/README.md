@@ -18,7 +18,10 @@ DAG состоит из 5 тасков:
 
 ![task_dependencies](https://github.com/borodatsik/middle-python-edu/blob/main/03_etl_airflow/img/01_task_dependencies.png?raw=true)
 
-При запуске DAG одновременно запускаются таски create_tables и download_egrul. После выполнения create_tables запускается загрузка вакансий upload_vacancies. После выполнения create_tables и download_egrul запускается загрузка телеком-компаний в БД upload_telecom_companies. И только по окончании upload_vacancies и upload_telecom_companies запускается финальный print_top_key_skills.
+* При запуске DAG одновременно запускаются таски create_tables и download_egrul.
+* После выполнения create_tables запускается загрузка вакансий upload_vacancies.
+* После выполнения create_tables и download_egrul запускается загрузка телеком-компаний в БД upload_telecom_companies.
+* И только по окончании upload_vacancies и upload_telecom_companies запускается финальный print_top_key_skills.
 
 ### Версии DAG, варианты запуска
 Внутри dag.py в цикле генерируется три версии DAG:
