@@ -5,3 +5,5 @@ jupyter.lnk
 02_html_and_api_parsing/__pycache__
 02_html_and_api_parsing/.ipynb_checkpoints
 02_html_and_api_parsing/02_html_and_api_parsing.ipynb
+03_etl_airflow/airflow/dags/top_key_skills/__pycache__
+03_etl_airflow/airflow/dags/top_key_skills/tasks/__pycache__
